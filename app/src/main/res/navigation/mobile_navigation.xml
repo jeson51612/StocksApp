@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.recycle.ui.Home.homefragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.example.recycle.ui.Stocksearch.SearchFragment"
+        android:label="@string/menu_search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/nav_recommand"
+        android:name="com.example.recycle.ui.Recommand.RecommandFragment"
+        android:label="@string/menu_recommandation"
+        tools:layout="@layout/fragment_recommand" />
+
+    <fragment
+        android:id="@+id/nav_analyze"
+        android:name="com.example.recycle.ui.Analyze.AnalyzeFragment"
+        android:label="@string/menu_analyze"
+        tools:layout="@layout/fragment_analyze" />
+
+    <fragment
+        android:id="@+id/nav_autochs"
+        android:name="com.example.recycle.ui.AutoChs.AutoChsFragment"
+        android:label="@string/menu_AutoChs"
+        tools:layout="@layout/fragment_autochs" />
+
+
+
+</navigation>

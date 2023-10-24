@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="144dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:gravity="top"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/searchlist_topic"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:autoSizeTextType="uniform" />
+
+    <TextView
+        android:id="@+id/searchlist_value"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:textSize="28dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/searchlist_open_value"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="left|bottom"
+            android:textSize="15dp"
+             />
+        <TextView
+            android:id="@+id/searchlist_close_value"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="right|bottom"
+            android:textSize="15dp"
+             />
+    </LinearLayout>
+
+
+</LinearLayout>

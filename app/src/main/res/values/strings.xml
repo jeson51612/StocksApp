@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">STOCK APP</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">My Studio</string>
+    <string name="nav_header_subtitle">Jeson_Deng Test</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">首頁</string>
+    <string name="menu_search">股票搜尋</string>
+    <string name="menu_recommandation">推薦項目</string>
+    <string name="menu_analyze">股市分析</string>
+    <string name="menu_AutoChs">智能選股</string>
+</resources>
