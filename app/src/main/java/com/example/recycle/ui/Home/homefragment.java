@@ -77,8 +77,9 @@ public class homefragment extends Fragment {
             public void onItemClick(int position) {
                 //需要設定彈出視窗為home...不然回不去home
                 NavOptions navOptions = new NavOptions.Builder()
-                        .setPopUpTo(R.id.nav_home, true, true) // 三个参数分别为popUpToId, popUpToInclusive, popUpToSaveState
+                        .setPopUpTo(R.id.nav_home, false, true) // 三個參數分別是popUpToId, popUpToInclusive, popUpToSaveState
                         .setLaunchSingleTop(true)
+                        .setRestoreState(true)
                         .build(); // 如果需要自定义导航选项，可以在这里设置 NavOptions
                 NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main); // 帶入目前啟動的active與hostfragment
                 switch (position) {

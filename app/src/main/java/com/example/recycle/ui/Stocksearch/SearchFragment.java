@@ -30,13 +30,15 @@ import retrofit2.Response;
 
 public class SearchFragment extends Fragment {
     private FragmentSearchBinding binding;
-    private ArrayList<StockModel> mData=new ArrayList<>();;
+    private ArrayList<StockModel> mData=new ArrayList<>();
     private RecyclerView recycler_view;
 
     private ArrayList<StockModel> filteredData = new ArrayList<>(); // 用于存储过滤后的数据
-
+    private ArrayList<StockModel> allData=new ArrayList<>();
 
     private MySearchAdapter adapter;
+
+    private String previous_text;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class SearchFragment extends Fragment {
         View root = binding.getRoot();
         GetRetrofitResponse(root);
         SearchView searchView = root.findViewById(R.id.searchView);
+        previous_text="";
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -55,9 +58,29 @@ public class SearchFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // 在文本搜尋時
-                filterData(newText);
-                return true;
+                if(newText.length()>=previous_text.length()) {
+                    // 在文本搜尋時
+                    if (newText.matches(".*[ㄅ-ㄩ].*")) {
+
+                    } else {
+                        filterData(newText);
+                    }
+                }
+                else
+                {
+                    filteredData.clear();
+                    for (StockModel item : allData) {
+
+                        if (item.getCode().toLowerCase().contains(newText.toLowerCase())||item.getName().contains(newText)) {
+                            filteredData.add(item);
+                        }
+                    }
+                    // 更新适配器的数据
+                    adapter.setData(filteredData);
+
+                }
+                previous_text=newText;
+                    return true;
             }
         });
         return root;
@@ -97,6 +120,10 @@ public class SearchFragment extends Fragment {
                 //將資料交給adapter
                 adapter=new MySearchAdapter(mData);
                 //設置adapter給recycler_view
+                if(mData.size()>allData.size()){
+
+                    allData=new ArrayList<>(mData);
+                }
                 recycler_view.setAdapter(adapter);
             }
 
@@ -127,7 +154,7 @@ public class SearchFragment extends Fragment {
         } else {
             // 否则，比较搜索文本与股票名称
             for (StockModel item : mData) {
-                if (item.getCode().toLowerCase().contains(query.toLowerCase())||item.getName().toLowerCase().contains(query.toLowerCase())) {
+                if (item.getCode().toLowerCase().contains(query.toLowerCase())||item.getName().contains(query)) {
                     filteredData.add(item);
                 }
             }
