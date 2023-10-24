@@ -9,7 +9,7 @@ retrofit api, list menu use and search function
 ![alt text](https://github.com/jeson51612/StocksApp/blob/6318b47/Home.png?raw=true)
 
 # Navigation menu
-![alt text](https://github.com/jeson51612/StocksApp/blob/6318b47/Navigation&nbsp;menu.png?raw=true)
+![alt text](https://github.com/jeson51612/StocksApp/blob/6318b47/Navigation\ menu.png?raw=true)
 
 # Recommand Stock
 ![alt text](https://github.com/jeson51612/StocksApp/blob/6318b47/RecommandStock.png?raw=true)
