@@ -8,4 +8,6 @@ public class credentials {
 
     public static final String Today_BASE_URL="https://mis.twse.com.tw/stock/api/";
 
+    public static final String Month_Base_URL="https://www.twse.com.tw/exchangeReport/";
+
 }

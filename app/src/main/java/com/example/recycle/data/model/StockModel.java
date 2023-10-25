@@ -10,6 +10,47 @@ import androidx.annotation.NonNull;
 public class StockModel {
     public String Code;
     public String Name;
+
+    public void setCode(String code) {
+        Code = code;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public void setTradeVolume(String tradeVolume) {
+        TradeVolume = tradeVolume;
+    }
+
+    public void setTradeValue(String tradeValue) {
+        TradeValue = tradeValue;
+    }
+
+    public void setOpeningPrice(String openingPrice) {
+        OpeningPrice = openingPrice;
+    }
+
+    public void setHighestPrice(String highestPrice) {
+        HighestPrice = highestPrice;
+    }
+
+    public void setLowestPrice(String lowestPrice) {
+        LowestPrice = lowestPrice;
+    }
+
+    public void setClosingPrice(String closingPrice) {
+        ClosingPrice = closingPrice;
+    }
+
+    public void setChange(String change) {
+        Change = change;
+    }
+
+    public void setTransaction(String transaction) {
+        Transaction = transaction;
+    }
+
     public String TradeVolume;
     public String TradeValue;
     public String OpeningPrice;

@@ -2,6 +2,131 @@ package com.example.recycle.data.model;
 
 public class stockDataItem {
     private String tv;
+
+    public void setTv(String tv) {
+        this.tv = tv;
+    }
+
+    public void setPs(String ps) {
+        this.ps = ps;
+    }
+
+    public void setNu(String nu) {
+        this.nu = nu;
+    }
+
+    public void setPz(String pz) {
+        this.pz = pz;
+    }
+
+    public void setBp(int bp) {
+        this.bp = bp;
+    }
+
+    public void setA(String a) {
+        this.a = a;
+    }
+
+    public void setB(String b) {
+        this.b = b;
+    }
+
+    public void setC(String c) {
+        this.c = c;
+    }
+
+    public void setD(String d) {
+        this.d = d;
+    }
+
+    public void setCh(String ch) {
+        this.ch = ch;
+    }
+
+    public void setTlong(long tlong) {
+        this.tlong = tlong;
+    }
+
+    public void setF(String f) {
+        this.f = f;
+    }
+
+    public void setIp(int ip) {
+        this.ip = ip;
+    }
+
+    public void setG(String g) {
+        this.g = g;
+    }
+
+    public void setMt(String mt) {
+        this.mt = mt;
+    }
+
+    public void setH(String h) {
+        this.h = h;
+    }
+
+    public void setIt(String it) {
+        this.it = it;
+    }
+
+    public void setL(String l) {
+        this.l = l;
+    }
+
+    public void setN(String n) {
+        this.n = n;
+    }
+
+    public void setO(String o) {
+        this.o = o;
+    }
+
+    public void setP(int p) {
+        this.p = p;
+    }
+
+    public void setEx(String ex) {
+        this.ex = ex;
+    }
+
+    public void setS(String s) {
+        this.s = s;
+    }
+
+    public void setT(String t) {
+        this.t = t;
+    }
+
+    public void setU(String u) {
+        this.u = u;
+    }
+
+    public void setV(String v) {
+        this.v = v;
+    }
+
+    public void setW(String w) {
+        this.w = w;
+    }
+
+    public void setNf(String nf) {
+        this.nf = nf;
+    }
+
+    public void setY(String y) {
+        this.y = y;
+    }
+
+    public void setZ(String z) {
+        this.z = z;
+    }
+
+    public void setTs(String ts) {
+        this.ts = ts;
+    }
+
     private String ps;
     private String nu;
     private String pz;

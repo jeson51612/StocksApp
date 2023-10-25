@@ -183,7 +183,11 @@ public class SearchFragment extends Fragment {
                             .build(); // 如果需要自定义导航选项，可以在这里设置 NavOptions
                     NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main); // 帶入目前啟動的active與hostfragment
                     Bundle args = new Bundle();
-                    args.putString("Code",mData.get(position).getCode());
+                    ArrayList<String> argsList=new ArrayList<>();
+                    argsList.add(mData.get(position).getCode());
+                    argsList.add(mData.get(position).getName());
+                    args.putStringArrayList("Code",argsList);
+//
                     navController.navigate(R.id.nav_stockchart, args, navOptions);
                     mData.clear();
                 }
