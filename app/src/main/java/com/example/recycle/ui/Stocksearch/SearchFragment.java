@@ -9,6 +9,9 @@ import androidx.appcompat.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +22,7 @@ import com.example.recycle.data.api.Servicey;
 import com.example.recycle.data.api.StockApi;
 import com.example.recycle.data.model.StockModel;
 import com.example.recycle.databinding.FragmentSearchBinding;
+import com.example.recycle.ui.Home.MyHomeAdapter;
 import com.example.recycle.ui.Recommand.MyRecommandAdapter;
 
 import java.util.ArrayList;
@@ -46,6 +50,7 @@ public class SearchFragment extends Fragment {
         binding = FragmentSearchBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         GetRetrofitResponse(root);
+//        detaildata();
         SearchView searchView = root.findViewById(R.id.searchView);
         previous_text="";
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -124,7 +129,9 @@ public class SearchFragment extends Fragment {
 
                     allData=new ArrayList<>(mData);
                 }
+//                detaildata();
                 recycler_view.setAdapter(adapter);
+                detaildata();
             }
 
 
@@ -162,6 +169,25 @@ public class SearchFragment extends Fragment {
             adapter.setData(filteredData);
         }
 
+    }
+    private void detaildata(){
+        if(adapter!=null){
+            adapter.setOnItemClickListener(new MySearchAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    //需要設定彈出視窗為home...不然回不去home
+                    NavOptions navOptions = new NavOptions.Builder()
+                            .setPopUpTo(R.id.nav_search, false, false) // 三個參數分別是popUpToId, popUpToInclusive, popUpToSaveState
+                            .setLaunchSingleTop(true)
+                            .setRestoreState(true)
+                            .build(); // 如果需要自定义导航选项，可以在这里设置 NavOptions
+                    NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main); // 帶入目前啟動的active與hostfragment
+                    Bundle args = new Bundle();
+                    args.putString("Code",mData.get(position).getCode());
+                    navController.navigate(R.id.nav_stockchart, args, navOptions);
+                    mData.clear();
+                }
+            });}
     }
 
 

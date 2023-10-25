@@ -14,6 +14,7 @@ import com.example.recycle.data.api.NowServicey;
 import com.example.recycle.data.api.NowStockApi;
 import com.example.recycle.data.model.DailyStockModel;
 import com.example.recycle.data.model.StockModel;
+import com.example.recycle.ui.Home.MyHomeAdapter;
 import com.example.recycle.ui.Recommand.MyRecommandAdapter;
 
 import retrofit2.Callback;
@@ -25,6 +26,14 @@ public class MySearchAdapter extends RecyclerView.Adapter<MySearchAdapter.ViewHo
 
     public MySearchAdapter(List<StockModel> data){
         mData=data;
+    }
+
+    private OnItemClickListener itemClickListener;
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.itemClickListener = listener;
     }
 
     @NonNull
@@ -81,8 +90,10 @@ public class MySearchAdapter extends RecyclerView.Adapter<MySearchAdapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
-                    //顯示目前價格
-
+                    //開始監聽並將值傳回fragment
+                    if (itemClickListener != null) {
+                        itemClickListener.onItemClick(getBindingAdapterPosition());
+                    }
                 }
             });
         }

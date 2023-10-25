@@ -34,6 +34,11 @@
         android:name="com.example.recycle.ui.AutoChs.AutoChsFragment"
         android:label="@string/menu_AutoChs"
         tools:layout="@layout/fragment_autochs" />
+    <fragment
+        android:id="@+id/nav_stockchart"
+        android:name="com.example.recycle.ui.StockChart.StockChartfragment"
+        android:label="自選股"
+        tools:layout="@layout/stock_plot_chart" />
 
 
 

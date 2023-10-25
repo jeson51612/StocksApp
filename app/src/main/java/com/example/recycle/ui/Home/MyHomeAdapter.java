@@ -91,8 +91,7 @@ public class MyHomeAdapter extends RecyclerView.Adapter<MyHomeAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
-//                    // 使用NavController导航到目的地
-
+//
                     if (itemClickListener != null) {
                         itemClickListener.onItemClick(getBindingAdapterPosition());
                     }
