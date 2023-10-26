@@ -10,97 +10,102 @@
 
     <ProgressBar
         android:id="@+id/idPgBarWait"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </ProgressBar>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/idRLHome"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/Stocksellprice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
             android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView16"
-            app:layout_constraintStart_toStartOf="@+id/textView12" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
-            android:layout_marginEnd="10dp"
-            android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="15sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/Stockbuyprice"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
-            app:layout_constraintStart_toStartOf="@+id/textView9" />
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="28dp"
+            android:text="賣出"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/Stockpercent"
+            app:layout_constraintStart_toStartOf="@+id/Stocksellprice"
+            app:layout_constraintTop_toTopOf="@+id/Stockcode" />
 
         <TextView
             android:id="@+id/textView9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="K線"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+            app:layout_constraintEnd_toEndOf="@+id/textView12"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/Stockbuyprice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="26dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="6dp"
             android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/Stocksellprice"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:text="零股"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="@+id/textView11" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="10dp"
-            android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView12"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="9dp"
+            android:text="買進"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/Stockbuyprice"
+            app:layout_constraintEnd_toEndOf="@+id/Stockbuyprice" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/Stockstate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="13dp"
             android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintStart_toStartOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/difference_value" />
 
         <TextView
             android:id="@+id/Stockcode"
@@ -109,42 +114,41 @@
             android:layout_marginStart="7dp"
             android:layout_marginTop="70dp"
             android:text="TextView"
-            android:textSize="12sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/Stockpercent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/difference_value"
             app:layout_constraintTop_toBottomOf="@+id/Stocknowprice" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/difference_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
+            android:layout_marginStart="15dp"
             android:text="TextView"
-            android:textSize="8sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/Stockpercent"
             app:layout_constraintStart_toStartOf="parent" />
+
 
         <TextView
             android:id="@+id/Stocknowprice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
             android:text="TextView"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView4"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toStartOf="@+id/Stockpercent"
+            app:layout_constraintStart_toStartOf="@+id/Stockpercent"
             app:layout_constraintTop_toBottomOf="@+id/Stockcode" />
-
 
         <RelativeLayout
             android:id="@+id/rect"
@@ -160,79 +164,70 @@
 
         <TableRow
             android:id="@+id/tableRow3"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
             android:layout_height="24dp"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="146dp"
-            android:layout_marginBottom="145dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="98dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/rect"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView10">
+            app:layout_constraintEnd_toEndOf="@+id/tableRow4"
+            app:layout_constraintStart_toStartOf="@+id/rect"
+            app:layout_constraintTop_toBottomOf="@+id/difference_value">
 
             <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
+                android:id="@+id/Stockaverageprice"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView"
-                tools:layout_editor_absoluteX="3dp"
-                tools:layout_editor_absoluteY="214dp" />
+                android:gravity="left"
+                android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
+                android:id="@+id/StockAmplitudeprice"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView"
-                tools:layout_editor_absoluteX="102dp"
-                tools:layout_editor_absoluteY="214dp" />
+                android:gravity="left"
+                android:text="TextView" />
 
             <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextView"
-                tools:layout_editor_absoluteX="203dp"
-                tools:layout_editor_absoluteY="214dp" />
+                android:id="@+id/Stock_single_quantity_price"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:text="TextView" />
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRow4"
-            android:layout_width="0dp"
+            android:layout_width="360dp"
             android:layout_height="24dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="9dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/tableRow3"
-            app:layout_constraintEnd_toEndOf="@+id/tableRow3"
-            app:layout_constraintStart_toStartOf="@+id/tableRow3"
-            app:layout_constraintTop_toBottomOf="@+id/textView8">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableRow3">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/Stockopenprice"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:gravity="left"
                 android:text="TextView"
-                tools:layout_editor_absoluteX="3dp"
-                tools:layout_editor_absoluteY="174dp" />
+                />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/StockyesterDayprice"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_gravity="left"
                 android:text="TextView"
-                tools:layout_editor_absoluteX="102dp"
-                tools:layout_editor_absoluteY="174dp" />
+                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/Stock_total_amount"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="TextView"
-                tools:layout_editor_absoluteX="203dp"
-                tools:layout_editor_absoluteY="174dp" />
+                 />
         </TableRow>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

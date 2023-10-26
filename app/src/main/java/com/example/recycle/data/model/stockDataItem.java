@@ -126,6 +126,9 @@ public class stockDataItem {
     public void setTs(String ts) {
         this.ts = ts;
     }
+    public void setOa(String oa) {
+        this.oa = oa;
+    }
 
     private String ps;
     private String nu;
@@ -157,6 +160,7 @@ public class stockDataItem {
     private String y;
     private String z;
     private String ts;
+    private String oa;
 
     public String getTv() {
         return tv;
@@ -176,6 +180,9 @@ public class stockDataItem {
 
     public int getBp() {
         return bp;
+    }
+    public String getOa() {
+        return oa;
     }
 
     public String getA() {

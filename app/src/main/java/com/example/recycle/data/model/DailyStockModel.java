@@ -98,8 +98,8 @@ class QueryTime {
     private String sessionStr;
     private String sysTime;
     private boolean showChart;
-    private int sessionFromTime;
-    private int sessionLatestTime;
+    private String sessionFromTime;
+    private String sessionLatestTime;
 
     // 省略 getter 和 setter 方法
 }
