@@ -1,8 +1,7 @@
 package com.example.recycle.ui.StockChart;
 
-import android.app.AlertDialog;
+
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -14,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,14 +27,17 @@ import com.example.recycle.data.model.DailyStockModel;
 import com.example.recycle.data.model.MonthStockModel;
 import com.example.recycle.data.model.StockModel;
 import com.example.recycle.data.model.stockDataItem;
-import com.example.recycle.databinding.FragmentAutochsBinding;
 import com.example.recycle.databinding.StockPlotChartBinding;
-import com.example.recycle.ui.AutoChs.AutoChsFragment;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,14 +48,16 @@ import retrofit2.Response;
 public class StockChartfragment extends Fragment {
     private StockPlotChartBinding binding;
     private TextView txtItem;
-    private String Code;
 
     private StockModel from_fragment=new StockModel();
 
     private stockDataItem Now_Data=new stockDataItem();
 
+    private MonthStockModel Month_Data=new MonthStockModel();
+
     private ConstraintLayout homeRL;
     private ProgressBar loadingPB;
+    private LineChart chart_line;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -66,20 +69,50 @@ public class StockChartfragment extends Fragment {
         //網路爬蟲獲取資料到Stockmodel
         ReceiveNowData(root);
         ReceiveMonthlyData(root);
-        //建立畫圖方塊
-        RelativeLayout relativeLayout = (RelativeLayout) root.findViewById(R.id.rect);
-        relativeLayout.addView(new StockChartfragment.Rectangle(getActivity()));
+
+        //建立畫圖方塊原生
+//        RelativeLayout relativeLayout = (RelativeLayout) root.findViewById(R.id.rect);
+//        relativeLayout.addView(new StockChartfragment.Rectangle(getActivity()));
+        //建立LineChart
+
+//        chart_line = (LineChart)root.findViewById(R.id.chart_line);
+//        chart_line.setData(getLineData());
         return root;
     }
+    private LineData getLineData(){
+        LineDataSet dataSetA = new LineDataSet(getChartData(), "每月歷史價格");
 
+        List<LineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(dataSetA); // add the datasets
+
+        return new LineData(getLabels(), dataSets);
+    }
+    private List<Entry> getChartData(){
+        final int DATA_COUNT = Month_Data.getData().size();
+
+        List<Entry> chartData = new ArrayList<>();
+        float local_close_price;
+        for(int i=0;i<DATA_COUNT;i++){
+            local_close_price=Float.parseFloat(Month_Data.getData().get(i).get(6));
+            chartData.add(new Entry(local_close_price, i));
+        }
+        return chartData;
+    }
+    private List<String> getLabels(){
+        int DATA_COUNT = Month_Data.getData().size();
+
+        List<String> chartLabels = new ArrayList<>();
+        for(int i=0;i<DATA_COUNT;i++){
+            chartLabels.add(Month_Data.getData().get(i).get(0));
+        }
+        return chartLabels;
+    }
     private void ChangeView(View root) {
         //更改內容
         txtItem=root.findViewById(R.id.Stockcode);
         txtItem.setText(from_fragment.getCode()+from_fragment.getName());
         txtItem=root.findViewById(R.id.Stockstate);
         txtItem.setText("上市");
-        homeRL=root.findViewById(R.id.idRLHome);
-        homeRL.setVisibility(View.VISIBLE);
         //處理賣出買入價格
         //賣出
         String Sellstring=Now_Data.getA();
@@ -134,6 +167,8 @@ public class StockChartfragment extends Fragment {
         txtItem.setText("昨收 "+Now_Data.getY());
         //單量總量計算
         String single_quantity=Now_Data.getG();
+        transfer = "\\d+";
+        pattern = Pattern.compile(transfer);
         matcher = pattern.matcher(single_quantity);
         matcher.find();
         String single_quantity_price=matcher.group();
@@ -143,9 +178,11 @@ public class StockChartfragment extends Fragment {
         txtItem.setText("總量 "+Now_Data.getV());
 
 
-        //解鎖畫面
-        loadingPB=root.findViewById(R.id.idPgBarWait);
-        loadingPB.setVisibility(View.GONE);
+//        //解鎖畫面
+//        loadingPB=root.findViewById(R.id.idPgBarWait);
+//        loadingPB.setVisibility(View.GONE);
+//        homeRL=root.findViewById(R.id.idRLHome);
+//        homeRL.setVisibility(View.VISIBLE);
 
     }
 
@@ -173,8 +210,8 @@ public class StockChartfragment extends Fragment {
 //                Now_Data.setA(response.body().getMsgArray().get(0).getA());//揭示賣價(從低到高，以_分隔資料)
 //                Now_Data.setF(response.body().getMsgArray().get(0).getF());//揭示賣量(配合a，以_分隔資料)
 //                Now_Data.setY(response.body().getMsgArray().get(0).getY());//昨日收盤價格
-                ChangeView(root);
                 Log.v("Tag",response.body().getRtmessage());
+                ChangeView(root);
 
             }
 
@@ -198,6 +235,15 @@ public class StockChartfragment extends Fragment {
             @Override
             public void onResponse(Call<MonthStockModel> call, Response<MonthStockModel> response) {
                 Log.v("Tag",response.body().getStat());
+                Month_Data=response.body();
+                chart_line = (LineChart)root.findViewById(R.id.chart_line);
+                chart_line.setData(getLineData());
+                //解鎖畫面
+                loadingPB=root.findViewById(R.id.idPgBarWait);
+                loadingPB.setVisibility(View.GONE);
+                homeRL=root.findViewById(R.id.idRLHome);
+                homeRL.setVisibility(View.VISIBLE);
+//                ChangeView(root);
 
             }
 
@@ -207,6 +253,7 @@ public class StockChartfragment extends Fragment {
                 Log.e("Tag", "Request failed: " + t.getMessage());
             }
         });
+
     }
 
 

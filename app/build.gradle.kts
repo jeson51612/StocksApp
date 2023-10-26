@@ -38,6 +38,7 @@ android {
         enable = true
     }
 
+
 }
 
 dependencies {
@@ -73,5 +74,7 @@ dependencies {
             because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
         }
     }
+    implementation("com.github.PhilJay:MPAndroidChart:v2.1.0")
 
 }
+

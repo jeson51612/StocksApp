@@ -13,5 +13,13 @@ dependencyResolutionManagement {
     }
 }
 
+
 rootProject.name = "Recycle"
 include(":app")
+
+// 新增jitpack仓库
+dependencyResolutionManagement {
+    repositories {
+        maven { url = uri("https://jitpack.io") }
+    }
+}
