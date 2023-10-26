@@ -16,3 +16,6 @@ retrofit api, list menu use and search function
 
 # StockSearch
 ![alt text](https://github.com/jeson51612/StocksApp/blob/6318b47/StockSearch.png?raw=true)
+
+# Search action
+![alt text](https://github.com/jeson51612/StocksApp/blob/32a59ff/Search_item_to_detailde_information.gif?raw=true)
