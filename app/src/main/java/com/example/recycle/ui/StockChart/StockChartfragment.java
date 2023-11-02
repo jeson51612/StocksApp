@@ -68,7 +68,17 @@ public class StockChartfragment extends Fragment {
         ReceiveStock(root);
         //網路爬蟲獲取資料到Stockmodel
         ReceiveNowData(root);
-        ReceiveMonthlyData(root);
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd");
+        String monthinform=dateFormat.format(date);
+        if(monthinform.equals("01")) {
+            date.setDate(date.getDate() - 1);
+            ReceiveMonthlyData(root, date);
+        }
+        else{
+            ReceiveMonthlyData(root, date);
+        }
+
 
         //建立畫圖方塊原生
 //        RelativeLayout relativeLayout = (RelativeLayout) root.findViewById(R.id.rect);
@@ -223,9 +233,8 @@ public class StockChartfragment extends Fragment {
         });
 
     }
-    private void ReceiveMonthlyData(View root){
+    private void ReceiveMonthlyData(View root,Date date){
         DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-        Date date = new Date();
         String Today = dateFormat.format(date);
         MonthStockApi stockApi= MonthServicey.getNowStockApi();
         Call<MonthStockModel> responseCall=stockApi.CallMonthStock(Today,from_fragment.getCode());
@@ -236,8 +245,13 @@ public class StockChartfragment extends Fragment {
             public void onResponse(Call<MonthStockModel> call, Response<MonthStockModel> response) {
                 Log.v("Tag",response.body().getStat());
                 Month_Data=response.body();
+                //設定chart_line縮放
                 chart_line = (LineChart)root.findViewById(R.id.chart_line);
                 chart_line.setData(getLineData());
+                chart_line.setTouchEnabled(true);//設定可以觸摸chart_line
+                chart_line.setDragEnabled(true);//設定可以拖移
+                chart_line.setScaleEnabled(true);//設定可以縮放
+
                 //解鎖畫面
                 loadingPB=root.findViewById(R.id.idPgBarWait);
                 loadingPB.setVisibility(View.GONE);
